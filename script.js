@@ -1,4 +1,4 @@
-
+console.log('1')
 let baseCash = 0;
 let totalAdded = 0;
 let totalRemoved = 0;
