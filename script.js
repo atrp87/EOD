@@ -8,7 +8,6 @@ const submitBtn = document.getElementById("submitBtn");
 const resetBtn = document.getElementById("resetBtn");
 
 /* POST */
-
 submitBtn.addEventListener("click", function () {
 
     const morningFloat =
