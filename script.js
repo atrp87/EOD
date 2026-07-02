@@ -1,3 +1,5 @@
+console.log("1234");
+
 
 let baseCash = 0;
 let totalAdded = 0;
