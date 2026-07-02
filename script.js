@@ -8,6 +8,7 @@ const submitBtn = document.getElementById("submitBtn");
 const resetBtn = document.getElementById("resetBtn");
 
 /* POST */
+
 submitBtn.addEventListener("click", function () {
 
     const morningFloat =
@@ -200,9 +201,11 @@ document.getElementById("differenceMessage").className = "";
 
     document.getElementById("topTills").innerHTML = "";
     document.getElementById("bottomTills").innerHTML = "";
+  
+  
+document.getElementById("floatMessage").textContent = "";
+document.getElementById("floatMessage").className = "";
 
-    document.getElementById("floatMessage").textContent = "";
-    document.getElementById("floatMessage").className = "";
 
     tillMode = 0;
 
