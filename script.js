@@ -1,9 +1,8 @@
-console.log("1234");
-
 
 let baseCash = 0;
 let totalAdded = 0;
 let totalRemoved = 0;
+let declaredTotal = 0;
 
 const submitBtn = document.getElementById("submitBtn");
 const resetBtn = document.getElementById("resetBtn");
@@ -21,17 +20,62 @@ submitBtn.addEventListener("click", function () {
     const cashCountedInput =
         parseFloat(document.getElementById("cashCountedInput").value);
 
-    const declareTender =
-        parseFloat(document.getElementById("declareTender").value);
+
+const declareTender =
+    parseFloat(document.getElementById("declareTender").value) || 0;
+
 
     if (!isNaN(cashCountedInput)) {
         baseCash = cashCountedInput;
     }
+  
+  declaredTotal += declareTender;
 
     totalAdded += morningFloat;
     totalRemoved += removeFloat;
 
     const remainingFloat = totalAdded - totalRemoved;
+  
+  
+
+const floatMessage =
+    document.getElementById("floatMessage");
+
+if (totalAdded === 0 && totalRemoved === 0) {
+
+    floatMessage.textContent = "";
+    floatMessage.className = "";
+
+}
+else if (remainingFloat === 0) {
+
+    floatMessage.textContent =
+        "✅ Float is balanced";
+
+    floatMessage.className =
+        "msg-good";
+
+}
+else if (remainingFloat > 0) {
+
+    floatMessage.textContent =
+        `⚠️ Remove £${remainingFloat.toFixed(2)} float from the till`;
+
+    floatMessage.className =
+        "msg-low";
+
+}
+else {
+
+    floatMessage.textContent =
+        `⚠️ Add £${Math.abs(remainingFloat).toFixed(2)} float to the till`;
+
+    floatMessage.className =
+        "msg-high";
+
+}
+
+
     const floatLine = totalRemoved - totalAdded;
 
 
@@ -60,37 +104,67 @@ document.getElementById("cashRemovedDrawer").textContent =
     (-totalRemoved).toFixed(2);
 
 
-    /* CASH ROW */
 
-    const cashTotal = baseCash + remainingFloat;
+/* CASH ROW */
 
-    document.getElementById("cashCounted").textContent =
-        cashTotal.toFixed(2);
+const cashTotal = baseCash + remainingFloat;
 
-    document.getElementById("cashTrans").textContent =
-        cashTotal.toFixed(2);
+document.getElementById("cashCounted").textContent =
+    cashTotal.toFixed(2);
 
-    let difference = 0;
+document.getElementById("cashTrans").textContent =
+    cashTotal.toFixed(2);
 
-    if (!isNaN(declareTender)) {
-        difference = cashTotal - declareTender;
-    }
 
-    document.getElementById("cashDifference").textContent =
-        difference.toFixed(2);
 
-    /* CLEAR INPUTS */
+let difference = 0;
 
-    document.getElementById("morningFloat").value = "";
-    document.getElementById("removeFloat").value = "";
+if (declaredTotal > 0) {
+    difference = baseCash - declaredTotal;
+}
 
-    if (!isNaN(declareTender)) {
+document.getElementById("cashDifference").textContent =
+    difference.toFixed(2);
 
-        document.getElementById("declareTender").value =
-            declareTender.toFixed(2);
-    }
 
-    document.getElementById("morningFloat").focus();
+
+const message = document.getElementById("differenceMessage");
+
+if (declaredTotal === 0) {
+
+    message.textContent = "";
+    message.className = "";
+
+} else if (difference === 0) {
+
+    message.textContent = "✅ Cash matches expected amount";
+    message.className = "msg-good";
+
+} else if (difference > 0) {
+
+    message.textContent =
+        `⚠️ £${difference.toFixed(2)} still to declare`;
+    message.className = "msg-low";
+
+} else {
+
+    message.textContent =
+        `⚠️ £${Math.abs(difference).toFixed(2)} over declared`;
+    message.className = "msg-high";
+
+}
+
+
+
+/* CLEAR INPUTS */
+
+document.getElementById("morningFloat").value = "";
+document.getElementById("removeFloat").value = "";
+document.getElementById("cashCountedInput").value = "";
+document.getElementById("declareTender").value = "";
+
+document.getElementById("morningFloat").focus();
+
 
 });
 
@@ -102,6 +176,12 @@ resetBtn.addEventListener("click", function () {
     baseCash = 0;
     totalAdded = 0;
     totalRemoved = 0;
+  declaredTotal = 0;
+  
+  
+document.getElementById("differenceMessage").textContent = "";
+document.getElementById("differenceMessage").className = "";
+
 
     document.getElementById("countedAmount").textContent = "0.00";
     document.getElementById("transAmount").textContent = "0.00";
