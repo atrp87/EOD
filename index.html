@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statement</title>
+        <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="float-inputs">
+
+        <div class="input-group">
+            <label for="cashCountedInput">Expected Cash</label>
+            <input type="number" id="cashCountedInput" placeholder="0.00">
+        </div>
+
+        <div class="input-group">
+            <label for="morningFloat">Morning Float</label>
+            <input type="number" id="morningFloat" placeholder="0.00">
+        </div>
+
+        <div class="input-group">
+            <label for="removeFloat">Remove Float</label>
+            <input type="number" id="removeFloat" placeholder="0.00">
+        </div>
+
+        <div class="input-group">
+            <label for="declareTender">Declare Tender</label>
+            <input type="number" id="declareTender" placeholder="0.00">
+        </div>
+
+    </div>
+
+    <div class="submit-container">
+        <button id="toggleTillsBtn">Extra Lines</button>
+        <button id="submitBtn">Post</button>
+        <button id="resetBtn">Reset</button>
+    </div>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Tender Type</th>
+                <th>Staff ID</th>
+                <th>POS Terminal No.</th>
+                <th>Currency Code</th>
+                <th>Tender Type Card No.</th>
+                <th>Tender Type Name</th>
+                <th>Counted Amount</th>
+                <th>Trans. Amount</th>
+                <th>Difference Amount</th>
+                <th>Real Exchange Rate</th>
+                <th>Added to Drawer</th>
+                <th>Removed from Drawer</th>
+            </tr>
+        </thead>
+
+
+        <tbody id="topTills"></tbody>
+
+
+        <tbody id="mainTill">
+
+            <tr>
+                <td>9</td>
+                <td class="selected">⋮</td>
+                <td>3NEH02</td>
+                <td></td>
+                <td></td>
+                <td>Tender Remove/Float</td>
+
+                <td class="num" id="countedAmount">0.00</td>
+                <td class="num" id="transAmount">0.00</td>
+                <td>0.00</td>
+                <td>1</td>
+                <td id="addedDrawer">0.00</td>
+                <td id="removedDrawer">0.00</td>
+            </tr>
+
+            <tr>
+                <td>1</td>
+                <td></td>
+                <td>3NEH02</td>
+                <td></td>
+                <td></td>
+                <td>Cash</td>
+
+                <td class="num" id="cashCounted">0.00</td>
+                <td class="num" id="cashTrans">0.00</td>
+                <td id="cashDifference">0.00</td>
+                <td>1</td>
+                <td id="cashAddedDrawer">0.00</td>
+                <td id="cashRemovedDrawer">0.00</td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td></td>
+                <td>3NEH02</td>
+                <td></td>
+                <td></td>
+                <td>Credit Card</td>
+
+                <td class="num">768.90</td>
+                <td class="num">768.90</td>
+                <td>0.00</td>
+                <td>1</td>
+                <td>0.00</td>
+                <td>0.00</td>
+            </tr>
+
+        </tbody>
+
+        <tbody id="bottomTills"></tbody>
+
+    </table>
+
+</body>
+
+</html>
