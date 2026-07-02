@@ -201,6 +201,9 @@ document.getElementById("differenceMessage").className = "";
     document.getElementById("topTills").innerHTML = "";
     document.getElementById("bottomTills").innerHTML = "";
 
+    document.getElementById("floatMessage").textContent = "";
+    document.getElementById("floatMessage").className = "";
+
     tillMode = 0;
 
 });
