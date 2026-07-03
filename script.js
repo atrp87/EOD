@@ -345,8 +345,8 @@ bottomTills.innerHTML = `
     <td></td>
     <td></td>
     <td>Tender Remove/Float</td>
-    <td class="num">-100.00</td>
-    <td class="num">-100.00</td>
+    <td class="num">0.00</td>
+    <td class="num">0.00</td>
     <td>0.00</td>
     <td>1</td>
     <td>-100.00</td>
