@@ -9,7 +9,6 @@ const resetBtn = document.getElementById("resetBtn");
 
 /* POST */
 
-
 submitBtn.addEventListener("click", function () {
 
     const morningFloat =
@@ -18,17 +17,11 @@ submitBtn.addEventListener("click", function () {
     const removeFloat =
         parseFloat(document.getElementById("removeFloat").value) || 0;
 
-    const cashCountedInput =
-        parseFloat(document.getElementById("cashCountedInput").value);
 
 
 const declareTender =
     parseFloat(document.getElementById("declareTender").value) || 0;
 
-
-    if (!isNaN(cashCountedInput)) {
-        baseCash = cashCountedInput;
-    }
   
   declaredTotal += declareTender;
 
@@ -172,13 +165,25 @@ document.getElementById("morningFloat").focus();
 
 /* RESET */
 
+
 resetBtn.addEventListener("click", function () {
 
-    baseCash = 0;
+    baseCash = Math.floor(Math.random() * (900 - 80 + 1)) + 80;
+
     totalAdded = 0;
     totalRemoved = 0;
-  declaredTotal = 0;
-  
+    declaredTotal = 0;
+
+    document.getElementById("cashCounted").textContent =
+        baseCash.toFixed(2);
+
+    document.getElementById("cashTrans").textContent =
+        baseCash.toFixed(2);
+
+    document.getElementById("cashDifference").textContent =
+        "0.00";
+
+
   
 document.getElementById("differenceMessage").textContent = "";
 document.getElementById("differenceMessage").className = "";
@@ -188,18 +193,12 @@ document.getElementById("differenceMessage").className = "";
     document.getElementById("transAmount").textContent = "0.00";
     document.getElementById("addedDrawer").textContent = "0.00";
     document.getElementById("removedDrawer").textContent = "0.00";
-
-    document.getElementById("cashCounted").textContent = "0.00";
-    document.getElementById("cashTrans").textContent = "0.00";
     document.getElementById("cashDifference").textContent = "0.00";
-
     document.getElementById("cashAddedDrawer").textContent = "0.00";
     document.getElementById("cashRemovedDrawer").textContent = "0.00";
-
     document.getElementById("morningFloat").value = "";
     document.getElementById("removeFloat").value = "";
     document.getElementById("declareTender").value = "";
-
     document.getElementById("topTills").innerHTML = "";
     document.getElementById("bottomTills").innerHTML = "";
   
@@ -388,3 +387,5 @@ bottomTills.innerHTML = `
     }
 
 });
+
+resetBtn.click();
